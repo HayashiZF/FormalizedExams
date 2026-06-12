@@ -3,6 +3,21 @@ import Mathlib.Data.Real.Basic
 import Mathlib.Data.Set.Basic
 import Mathlib.Order.Monotone.Defs
 import Mathlib.Order.Interval.Set.Defs
+import Mathlib.LinearAlgebra.AffineSpace.AffineSubspace.Defs
+import Mathlib.LinearAlgebra.AffineSpace.Defs
+import Mathlib.Algebra.Module.Prod
+import Mathlib.LinearAlgebra.AffineSpace.AffineSubspace.Basic
+
+
+open AffineSubspace
+
+-- notation "line[" k ", " p₁ ", " p₂ "]" => affineSpan k (insert p₁ (singleton _ p₂))
+
+#check line[k, v,]
+
+example (s : AffineSubspace ℝ (ℝ × ℝ)) : s.Parallel s := by
+  apply AffineSubspace.Parallel.refl
+
 
 /- global answer placeholder -/
 variable {PlaceHolder : Type}
@@ -63,7 +78,7 @@ noncomputable def sin_angle_line_plane (v n : ℝ × ℝ × ℝ) : ℝ :=
 noncomputable def distance_point_plane_origin (P n : ℝ × ℝ × ℝ) : ℝ :=
   |dot_product3 P n| / vec_length3 n
 
-theorem gaokao2026_q1_p15_part1
+example
     (a h : ℝ) (A B C A1 B1 C1 D E : ℝ × ℝ × ℝ)
     (h_setup : PrismSetup a h A B C A1 B1 C1)
     (h_D : is_midpoint3 D A B)
@@ -71,7 +86,7 @@ theorem gaokao2026_q1_p15_part1
     dot_product3 (E.1 - D.1, E.2.1 - D.2.1, E.2.2 - D.2.2) normal_BCC1B1 = 0 := by
   sorry
 
-theorem gaokao2026_q1_p15_part2
+example
     (a : ℝ) (A B C A1 B1 C1 D E : ℝ × ℝ × ℝ)
     (h_setup : PrismSetup a 2 A B C A1 B1 C1)
     (h_D : is_midpoint3 D A B)
